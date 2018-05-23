@@ -11,7 +11,7 @@ type Host struct {
 	Name                    *string                  `json:"name,omitempty"`
 	LocationID              *int                     `json:"location_id,omitempty"`
 	OrganizationID          *int                     `json:"organization_id,omitempty"`
-	EnvironmentID           *int                  `json:"environment_id,omitempty"`
+	EnvironmentID           *int                     `json:"environment_id,omitempty"`
 	IP                      *string                  `json:"ip,omitempty"`
 	MAC                     *string                  `json:"mac,omitempty"`
 	ArchitectureID          *int                     `json:"architecture_id,omitempty"`
@@ -19,7 +19,7 @@ type Host struct {
 	RealmID                 *int                     `json:"realm_id,omitempty"`
 	PuppetProxyID           *int                     `json:"puppet_proxy_id,omitempty"`
 	PuppetClassIDs          *[]int                   `json:"puppetclass_ids,omitempty"`
-	OperatingSystemID       *string                  `json:"operatingsystem_id,omitempty"`
+	OperatingSystemID       *int                     `json:"operatingsystem_id,omitempty"`
 	MediumID                *string                  `json:"medium_id,omitempty"`
 	PTableID                *int                     `json:"ptable_id,omitempty"`
 	SubnetID                *int                     `json:"subnet_id,omitempty"`
@@ -37,7 +37,7 @@ type Host struct {
 	Managed                 *bool                    `json:"managed,omitempty"`
 	ProgressReportID        *string                  `json:"progress_report_id,omitempty"`
 	Comment                 *string                  `json:"comment,omitempty"`
-	Capabilities            *string                  `json:"capabilities,omitempty"`
+	Capabilities            *[]string                `json:"capabilities,omitempty"`
 	ComputeProfileID        *int                     `json:"compute_profile_id,omitempty"`
 	RootPassword            *string                  `json:"root_pass,omitempty"`
 	InterfaceAttributes     *InterfaceAttributes     `json:"interface_attributes,omitempty"`
