@@ -11,7 +11,7 @@ type Host struct {
 	Name                    *string                  `json:"name,omitempty"`
 	LocationID              *int                     `json:"location_id,omitempty"`
 	OrganizationID          *int                     `json:"organization_id,omitempty"`
-	EnvironmentID           *string                  `json:"environment_id,omitempty"`
+	EnvironmentID           *int                  `json:"environment_id,omitempty"`
 	IP                      *string                  `json:"ip,omitempty"`
 	MAC                     *string                  `json:"mac,omitempty"`
 	ArchitectureID          *int                     `json:"architecture_id,omitempty"`
