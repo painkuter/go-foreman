@@ -7,6 +7,14 @@ import (
 
 type HostsService service
 
+type HostResult struct {
+	Total    *int    `json:"Total,omitempty"`
+	SubTotal *int    `json:"subtotal,omitempty"`
+	Page     *int    `json:"page,omitempty"`
+	PerPage  *int    `json:"perpage,omitempty"`
+	Results  []*Host `json:"results,omitempty"`
+}
+
 type Host struct {
 	Name                    *string                  `json:"name,omitempty"`
 	LocationID              *int                     `json:"location_id,omitempty"`
@@ -102,13 +110,13 @@ func (s *HostsService) GetAll(ctx context.Context, opt *HostGetAllOptions) ([]*H
 		return nil, nil, err
 	}
 
-	h := new([]*Host)
+	h := new(HostResult)
 	resp, err := s.client.Do(ctx, req, h)
 	if err != nil {
 		return nil, resp, err
 	}
 
-	return *h, resp, err
+	return h.Results, resp, err
 }
 
 func (s *HostsService) Get(ctx context.Context, id string) (*Host, *Response, error) {
