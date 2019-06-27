@@ -3,6 +3,7 @@ package foreman
 import (
 	"bytes"
 	"context"
+	"encoding/base64"
 	"encoding/json"
 	"io"
 	"io/ioutil"
@@ -82,8 +83,17 @@ func (c *Client) NewRequest(method, urlStr string, body interface{}) (*http.Requ
 	if body != nil {
 		req.Header.Set("Content-Type", "application/json")
 	}
+	if c.BaseURL.User.Username() != "" {
+		pass, _ := c.BaseURL.User.Password()
+		req.Header.Add("Authorization", "Basic "+basicAuth(c.BaseURL.User.Username(), pass))
+	}
 
 	return req, nil
+}
+
+func basicAuth(username, password string) string {
+	auth := username + ":" + password
+	return base64.StdEncoding.EncodeToString([]byte(auth))
 }
 
 type Response struct {
